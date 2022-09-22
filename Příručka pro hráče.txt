@@ -1,0 +1,19 @@
+
+V této hře se nachází několik prostorů mezi kterými lze procházet. Tyto prostory mohou obsahovat různé předměty.
+Některé lze sebrat a odevzdat, jiné zas ne. V prostorech se také mohou nacházet npc, se kterými lze mluvit.
+Konverzací se dozvíte, jaký předmět by konkrétní npc chtělo přinést, a jakou odměnu by vaše postava mohla na oplátku dostat.
+Nicméně tuto odměnu lze většinou získat i pomocí násilí. Tento jednoduchý mechanismus je klíčový pro úspěšné dohráni hry.
+Pro získání obou potřebných předmětů prakticky není nutné projít všechny prostory ve hře, každopádně se to určitě hodí :)
+
+Vysvětlení příkazů:
+nápověda - vypíše krátký popis cíle hry a použitelné příkazy
+jdi "název prostoru" - přesune hráče do zadaného prostoru, který sousedí s aktuálním prostorem
+seber "název věci" - sebere zadanou věc, pokud se nachází v aktuálním prostoru a pokud je sebratelná, věc se přidá hráči do inventáře
+polož "název věci" - položí zadanou věc v aktuálním prostoru, věc může být později znovu sebrána
+inventář - zobrazí, jaké předměty má hráč u sebe
+odevzdej "název věci" "název npc" - odevzdá zadanou věc zadanému npc, ale pouze pokud npc tuto věc chce
+promluv "název npc" - zobrazí konverzaci se zadaným npc, skrze tuto konverzaci se lze dozvědět, co tak asi tato postava chce apod.
+prozkoumej "název věci" - zobrazí popis věci v inventáři nebo prostoru
+zaútoč "název npc" - jakmile hráč získá glock, tento příkaz zadané npc zabije a přidá hráči do inventáře jeho věci, některé postavy však zabít nelze
+odjeď "název prostoru(odjet lze pouze do úkrytu)" - pokud hráč v parkovacím domě položil klíčky a benzín, může odjet tímto příkazem do svého úkrytu
+konec - tímto příkazem hra končí
