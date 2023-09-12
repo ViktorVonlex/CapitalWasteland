@@ -8,6 +8,8 @@ import cz.vse.adventura.logika.Hra;
 import cz.vse.adventura.logika.IHra;
 import cz.vse.adventura.uiText.TextoveRozhrani;
 
+import java.util.Locale;
+
 /*******************************************************************************
  * Třída  Start je hlavní třídou projektu,
  * který představuje jednoduchou textovou adventuru určenou k dalším úpravám a rozšiřování
@@ -24,5 +26,6 @@ public class Start {
         IHra hra = new Hra();
         TextoveRozhrani ui = new TextoveRozhrani(hra);
         ui.hraj();
+//        ui.hrajZeSouboru("commands.txt");
     }
 }

@@ -7,7 +7,7 @@ package cz.vse.adventura.logika;
 
 class PrikazOdjed implements IPrikaz{
 
-    private static final String NAZEV = "odjeď";
+    private static final String NAZEV = "odjed";
     private final HerniPlan herniPlan;
 
     /**
@@ -46,7 +46,7 @@ class PrikazOdjed implements IPrikaz{
         if (sousedniProstor == null) {
             return "Tam na motorce jet nemůžu!";
         }
-        else if (!sousedniProstor.getNazev().contains("úkryt")){
+        else if (!sousedniProstor.getNazev().contains("ukryt")){
             return "Tam na motorce jet nemůžu!";
         }
         else {

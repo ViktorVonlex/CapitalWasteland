@@ -7,7 +7,7 @@ package cz.vse.adventura.logika;
 
 class PrikazInventar implements IPrikaz{
 
-    private static final String NAZEV = "inventář";
+    private static final String NAZEV = "inventar";
     private final HerniPlan herniPlan;
 
     /**

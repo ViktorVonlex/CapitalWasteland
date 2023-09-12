@@ -2,48 +2,46 @@ package cz.vse.adventura.logika;
 
 
 /**
- *  Class HerniPlan - třída představující mapu a stav adventury.
- * 
- *  Tato třída inicializuje prvky ze kterých se hra skládá:
- *  vytváří všechny prostory,
- *  propojuje je vzájemně pomocí východů 
- *  a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
- *
+ * Class HerniPlan - třída představující mapu a stav adventury.
+ * <p>
+ * Tato třída inicializuje prvky ze kterých se hra skládá:
+ * vytváří všechny prostory,
+ * propojuje je vzájemně pomocí východů
+ * a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
  */
 public class HerniPlan {
-    
+
     private Prostor aktualniProstor;
     public Player hrdina;
-    
-     /**
-     *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
-     *  Jako výchozí aktuální prostor nastaví halu.
+
+    /**
+     * Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
+     * Jako výchozí aktuální prostor nastaví halu.
      */
     public HerniPlan() {
         zalozProstoryHry();
 
     }
+
     /**
-     *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
-     *  Jako výchozí aktuální prostor nastaví domeček.
+     * Vytváří jednotlivé prostory a propojuje je pomocí východů.
+     * Jako výchozí aktuální prostor nastaví domeček.
      */
     private void zalozProstoryHry() {
 
-        //moje prostory
-        Prostor parkovaciDum = new Prostor("parkovací_dům", "Je tu jen pár rozpadlých aut a funkční motorka.");
-        Prostor ukryt = new Prostor("úkryt", "Bezpečné útočistě plné vybavení. Tady jsi doma.\nDokázal jsi přežít strastiplnou cestu. Nyní můžeš hru ukončit příkazem 'konec'");
-        Prostor centralniUlice = new Prostor("centrální_ulice","Opuštěná hlavní třída, která vede na spoustu míst.");
-        Prostor zapadniUlice = new Prostor("západní_ulice","Je odtud vidět park a čerpací stanice.");
-        Prostor vychodniUlice = new Prostor("východní_ulice","Na chodníku se válí mrtvola v louži krve.");
-        Prostor stan = new Prostor("stan","Majitel tohoto obydlí zřejmě rád sbírá mince.");
-        Prostor obchodniCentrum = new Prostor("obchodní_centrum","Snadno průchodné ruiny starého obchodního domu.");
-        Prostor zbrane = new Prostor("gunRunners","Vyrabovaný obchod se zbraněmi.\nMožná tu něco zůstalo.");
-        Prostor potraviny = new Prostor("samoobsluha", "Nic čerstvého už tu asi nenajdu.");
-        Prostor benzinka = new Prostor("čerpací_stanice", "Budova je značně opevněná, zřejmě proti náhodným útokům.");
-        Prostor park = new Prostor("park", "Kdysi tento park zářil krásou.\nNyní vyzařuje pouze radiaci.");
+        Prostor parkovaciDum = new Prostor("parkovaci_dum", "Je tu jen par rozpadlych aut a funkcni motorka.");
+        Prostor ukryt = new Prostor("ukryt", "Bezpecne utociste plne vybaveni. Tady jsi doma.\nDokazal jsi prezit strastiplnou cestu. Nyni muzes hru ukoncit prikazem 'konec'");
+        Prostor centralniUlice = new Prostor("centralni_ulice", "Opustena hlavni trida, ktera vede na spoustu mist.");
+        Prostor zapadniUlice = new Prostor("zapadni_ulice", "Je odtud videt park a cerpací stanice.");
+        Prostor vychodniUlice = new Prostor("vychodni_ulice", "Na chodniku se vali mrtvola v louzi krve.");
+        Prostor stan = new Prostor("stan", "Majitel tohoto obydli zrejme rad sbira mince.");
+        Prostor obchodniCentrum = new Prostor("obchodni_centrum", "Snadno pruchodne ruiny stareho obchodniho domu.");
+        Prostor zbrane = new Prostor("gunRunners", "Vyrabovany obchod se zbranemi.\nMozna tu neco zustalo.");
+        Prostor potraviny = new Prostor("samoobsluha", "Nic cerstveho uz tu asi nenajdu.");
+        Prostor benzinka = new Prostor("cerpaci_stanice", "Budova je znacne opevnena, zrejme proti nahodnym utokum.");
+        Prostor park = new Prostor("park", "Kdysi tento park zaril krasou.\nNyni vyzařuje pouze radiaci.");
 
-
-        //východy k mým prostorům
+        //vychody k mym prostorum
         parkovaciDum.setVychod(ukryt);
         parkovaciDum.setVychod(centralniUlice);
         centralniUlice.setVychod(parkovaciDum);
@@ -64,33 +62,30 @@ public class HerniPlan {
         benzinka.setVychod(zapadniUlice);
         park.setVychod(zapadniUlice);
 
-
         Player hrac = new Player("hrac");
         hrdina = hrac;
 
-        //Nastavení začátečního prostoru
+        //Nastaveni zacatecniho prostoru
         aktualniProstor = parkovaciDum;
 
+        //Vytvareni mych veci
+        Vec benzin = new Vec("benzin", true, "Plny kanistr benzinu.", false, true);
+        Vec motorka = new Vec("motorka", false, "Tvoje jedina nadeje na navrat do ukrytu.", false, true);
+        Vec klicky = new Vec("klicky", true, "Klicky od motorky v parkovacim dome.", false, true);
+        Vec glock = new Vec("glock", true, "Ma sobe vyryty nazev: MoneyMaker", false, false);
+        Vec dzus = new Vec("dzus", true, "Vyborny proshly dzus...", true, false);
+        Vec drobaky = new Vec("drobaky", true, "Par drobnych minci.", true, false);
+        Vec pivko = new Vec("pivicko", true, "Vychlazena dvanactka.\nJine pivo neexistuje...", true, false);
+        Vec mrtvola = new Vec("mrtvola", false, "Toto telo ma kudlu v zadech a lezi pred stanem.", false, false);
+        Vec socha = new Vec("socha", false, "Znicena socha diktatora, ktery rozpoutal jaderny holokaust.", false, false);
+        Vec billboard = new Vec("billboard", false, "Billboard s napisem: Aladin zvolen cisarem uz po seste v rade.\nPres tento napis je nasprejovane graffiti: VRAH", false, false);
+        Vec hromadaOdpadku = new Vec("hromada_odpadku", false, "Nekonecna hromada odpadku zrejme slouzi mistnimu tulakovi jako bydliste.", false, false);
 
-        //Vytváření mých věcí
-        Vec benzin = new Vec ("benzín", true,"Plný kanistr benzínu.",false,true);
-        Vec motorka = new Vec("motorka",false,"Tvoje jediná naděje na návrat do úkrytu.",false, true);
-        Vec klicky = new Vec("klíčky", true,"Klíčky od motorky v parkovacím domě.",false,true);
-        Vec glock = new Vec("glock",true, "Má sobe vyrytý název: MoneyMaker",false,false);
-        Vec dzus = new Vec ("džus", true,"Výborný prošlý džuš...",true,false);
-        Vec drobaky = new Vec ("drobáky",true, "Pár drobných mincí.",true,false);
-        Vec pivko = new Vec ("pivíčko",true,"Vychlazená dvanáctka.\nJiné pivo neexistuje...",true,false);
-        Vec mrtvola = new Vec("mrtvola", false, "Toto tělo má kudlu v zádech a leží před stanem.",false,false);
-        Vec socha = new Vec("socha", false,"Zničená socha diktárora, který rozpoutal jaderný holokaust.",false,false);
-        Vec billboard = new Vec ("billboard",false,"Billboard s nápisem: Aladin zvolen císařem už po šesté v řadě.\nPřes tento nápis je nasprejované graffiti: VRAH",false,false);
-        Vec hromadaOdpadku = new Vec("hromada_odpadků",false,"Nekonečná hromada odpadků zřejmě slouží místnímu tulákovi jako bydlistě.",false,false);
-
-
-        //Vytváření npcček
-        Npc bezdomovec = new Npc("bezdomovec", "Heeeej ty musíš mi pomoct.\nOd té doby co mi došel benzín v mojí milovaný motorce jsem pořád v lihu a bojím se, že vystřízlivím...\nRychle mi sežeň nějakej alkáček.", "Eeeaeheha aaaa na světě je přece krásně lalalal!!",true, pivko,klicky,true);
-        Npc franta = new Npc ("franta", "Vypadáš, že tam venku dokážeš přežít...\nJestli mi přineseš trochu džusu, tak se ti odměním.", "Díky za džus kamaráde, snad ti ten benzín hilfne.",true,dzus,benzin,false);
-        Npc automat = new Npc("automat_na_pití","Tak co to bude šéfe? Máme tu poslední pivko.","Tak co to bude šéfe?",true,drobaky,pivko,false);
-        Npc thorin = new Npc("thorin", "Já jsem král pod stanem a tohle je moje králoství.\nVšechno zlato je moje a nikdo nic nedostane!!\n(Mám pocit, že tohohle týpka budu muset sejmout...)",null, true, null,drobaky,true);
+        //Vytvareni npccek
+        Npc bezdomovec = new Npc("bezdomovec", "Heeeej ty musis mi pomoct.\nOd te doby co mi dosel benzin v moji milovane motorce jsem porad v lihu a bojim se, ze vystrizlivim...\nRychle mi sezej nejakej alkacek.", "Eeeaeheha aaaa na svete je prece krasne lalalal!!", true, pivko, klicky, true);
+        Npc franta = new Npc("franta", "Vypadas, ze tam venku dokazes prezit...\nJestli mi prineses trochu dzusu, tak se ti odmenim.", "Diky za dzus kamaraade, snad ti ten benzin hilfne.", true, dzus, benzin, false);
+        Npc automat = new Npc("automat_na_piti", "Tak co to bude sefe? Mame tu posledni pivko.", "Tak co to bude sefe?", true, drobaky, pivko, false);
+        Npc thorin = new Npc("thorin", "Jsem kral pod stanem a tohle je moje kralovstvi.\nVsechno zlato je moje a nikdo nic nedostane!!\n(Mam pocit, ze tohohle typka budu muset sejmout...)", null, true, null, drobaky, true);
 
 
         //Vkládání npc do prostorů
@@ -115,31 +110,31 @@ public class HerniPlan {
         obchodniCentrum.addVec(socha);
         zapadniUlice.addVec(billboard);
         park.addVec(hromadaOdpadku);
-}
-    
-    /**
-     *  Metoda vrací odkaz na aktuální prostor, ve kterém se hráč právě nachází.
-     *
-     *@return     aktuální prostor
-     */
-    
-    public Prostor getAktualniProstor() {
-        return aktualniProstor;
-    }
-    
-    /**
-     *  Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
-     *
-     *@param  prostor nový aktuální prostor
-     */
-    public void setAktualniProstor(Prostor prostor) {
-       aktualniProstor = prostor;
     }
 
     /**
-     *  Vrací instanci třídy Player.
+     * Metoda vrací odkaz na aktuální prostor, ve kterém se hráč právě nachází.
+     *
+     * @return aktuální prostor
      */
-    public Player getPlayer(){
+
+    public Prostor getAktualniProstor() {
+        return aktualniProstor;
+    }
+
+    /**
+     * Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
+     *
+     * @param prostor nový aktuální prostor
+     */
+    public void setAktualniProstor(Prostor prostor) {
+        aktualniProstor = prostor;
+    }
+
+    /**
+     * Vrací instanci třídy Player.
+     */
+    public Player getPlayer() {
         return hrdina;
     }
 

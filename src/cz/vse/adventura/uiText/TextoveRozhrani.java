@@ -30,30 +30,38 @@ public class TextoveRozhrani {
      *  příkazu od hráče do konce hry (dokud metoda konecHry() z logiky nevrátí
      *  hodnotu true). Nakonec vypíše text epilogu.
      */
+
     public void hraj() {
         System.out.println(hra.vratUvitani());
+
+        // Create a BufferedReader to read from the console
+        BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
         // základní cyklus programu - opakovaně se čtou příkazy a poté
         // se provádějí do konce hry.
 
-        while (!hra.konecHry()) {
-            String radek = prectiString();
-            System.out.println(hra.zpracujPrikaz(radek));
+        try {
+            while (!hra.konecHry()) {
+                String radek = prectiString(consoleReader);
+                System.out.println(hra.zpracujPrikaz(radek));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         System.out.println(hra.vratEpilog());
     }
 
     /**
-     *  Metoda přečte příkaz z příkazového řádku
+     *  Metoda přečte příkaz z příkazového řádku nebo z piped inputu
      *
-     *@return    Vrací přečtený příkaz jako instanci třídy String
+     * @return Vrací přečtený příkaz jako instanci třídy String
      */
-    private String prectiString() {
-        Scanner scanner = new Scanner(System.in);
+    private String prectiString(BufferedReader reader) throws IOException {
         System.out.print("> ");
-        return scanner.nextLine();
+        return reader.readLine();
     }
+
 
     public void hrajZeSouboru(String nazevSouboru){
         try (BufferedReader cteni = new BufferedReader(new FileReader(nazevSouboru));
